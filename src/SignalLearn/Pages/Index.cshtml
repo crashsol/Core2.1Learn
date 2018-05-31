@@ -1,0 +1,32 @@
+﻿@page
+<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            用户名名：<input type="text" id="userInput" />
+            <br />
+            消息内容：<input type="text" id="messageInput" />
+            <input type="button" id="sendButton" value="发送消息" />
+            <input type="button" id="test1" value="请求-应答（只有自己会收到消息)" />
+            <hr />
+            客户端连接，会自动加入到默认分组
+            <input type="button" id="test2" value="发送-分组消息" />
+        </div>
+    </div>
+    <hr />
+    <div class="row">  
+        <div class="col-6">
+            <p>SendMessage:</p>
+            <ul id="messagesList"></ul>
+        </div>
+        <div class="col-6">
+            <p>SendMessageToGroups：</p>
+            <ul id="groupMessageList">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/chat.js"></script>

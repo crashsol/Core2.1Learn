@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalLearn", "src\SignalLearn\SignalLearn.csproj", "{470D1B27-1D26-4C15-9384-8533D68039CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{470D1B27-1D26-4C15-9384-8533D68039CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{470D1B27-1D26-4C15-9384-8533D68039CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{470D1B27-1D26-4C15-9384-8533D68039CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{470D1B27-1D26-4C15-9384-8533D68039CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{470D1B27-1D26-4C15-9384-8533D68039CA} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BD03B15-0650-4A2E-8129-B7BC57D78816}
+	EndGlobalSection
+EndGlobal
