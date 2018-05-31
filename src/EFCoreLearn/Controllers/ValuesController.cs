@@ -18,7 +18,7 @@ namespace EFCoreLearn.Controllers
 
         public ValuesController(TestDbcontext dbContext)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContext;           
         }
         // GET api/values
         [HttpGet]

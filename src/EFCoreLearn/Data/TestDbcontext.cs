@@ -19,7 +19,11 @@ namespace EFCoreLearn.Data
 
         public DbSet<Blog> Blogs { get; set; }
 
-        public DbSet<BlogPostsCount> BlogPostsCounts { get; set; }
+
+        /// <summary>
+        /// 视图查询 需要使用DbQuery ,永远不会跟踪的更改上_DbContext_并因此永远不会插入、 更新或删除数据库上。
+        /// </summary>
+        public DbQuery<BlogPostsCount> BlogPostsCounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -41,11 +45,7 @@ namespace EFCoreLearn.Data
                 //Owned 不支持EntityConfiguration
                 //  modelBuilder.ApplyConfiguration(new OrderEntityConfiguration());
             });
-
-            List<Post> posts = new List<Post>
-            {
-
-            };
+          
             modelBuilder.Entity<Post>(option =>
             {
                 option.ToTable("Post");
