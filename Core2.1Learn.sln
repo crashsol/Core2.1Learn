@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalLearn", "src\SignalLearn\SignalLearn.csproj", "{470D1B27-1D26-4C15-9384-8533D68039CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalLearn", "src\SignalLearn\SignalLearn.csproj", "{470D1B27-1D26-4C15-9384-8533D68039CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreLearn", "EFCoreLearn\EFCoreLearn.csproj", "{6C492B2B-C6E5-4EED-B930-AD240198821F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +19,17 @@ Global
 		{470D1B27-1D26-4C15-9384-8533D68039CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{470D1B27-1D26-4C15-9384-8533D68039CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{470D1B27-1D26-4C15-9384-8533D68039CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C492B2B-C6E5-4EED-B930-AD240198821F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C492B2B-C6E5-4EED-B930-AD240198821F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C492B2B-C6E5-4EED-B930-AD240198821F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C492B2B-C6E5-4EED-B930-AD240198821F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{470D1B27-1D26-4C15-9384-8533D68039CA} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
+		{6C492B2B-C6E5-4EED-B930-AD240198821F} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BD03B15-0650-4A2E-8129-B7BC57D78816}
