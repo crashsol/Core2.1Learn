@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +7,17 @@ using System.Threading.Tasks;
 
 namespace SignalLearn.Hubs
 {
-    public class ChatHub : Hub
+    /// <summary>
+    /// Hub中定义的public方法提供给Client调用
+    /// </summary>
+    public class ChatHub : Hub       
     {
+        public readonly ILogger<ChatHub> _logger;
+
+        public ChatHub(ILogger<ChatHub> logger)
+        {
+            _logger = logger;
+        }
 
         //定义服务端 "SendMessage" 处理方法,用于处理 Web客户端"SendMessage"事件。
         public async Task SendMessage(string user, string message)
@@ -22,8 +32,8 @@ namespace SignalLearn.Hubs
         /// <param name="message"></param>
         /// <returns></returns>
         public async Task SendMessageToCaller(string message)
-        {          
-            await Clients.Caller.SendAsync("SendMessageToCaller", "From Server Reply:" + DateTime.Now.ToString("yyyy-MM-dd") + "  " + message);
+        {     
+            await Clients.Caller.SendAsync("ReceiveMessage","user", "From Server Reply:" + DateTime.Now.ToString("yyyy-MM-dd") + "  " + message);
         }
 
         /// <summary>
@@ -34,7 +44,7 @@ namespace SignalLearn.Hubs
         public Task SendMessageToGroups(string message)
         {          
             List<string> groups = new List<string>() { "SignalR Users" };
-            return Clients.Groups(groups).SendAsync("SendMessageToGroups", message);
+            return Clients.Groups(groups).SendAsync("ReceiveMessage","user", message);
         }
 
         /// <summary>
@@ -49,6 +59,7 @@ namespace SignalLearn.Hubs
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
+            _logger.LogInformation($"连接用户ID: { Context.UserIdentifier} -- ConnectId： {Context.ConnectionId}");
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, "SignalR Users");
             await base.OnDisconnectedAsync(exception);
         }
