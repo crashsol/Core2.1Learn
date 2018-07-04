@@ -48,11 +48,7 @@ namespace TodoApi.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult> PostAsync([FromBody]TodoItem item)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
+        {          
             await _dbContext.TodoItems.AddAsync(item);
             await _dbContext.SaveChangesAsync();
             return Ok();

@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace TodoApi.Infrastructure.OperationExcetion
+{
+    /// <summary>
+    /// 自定义操作异常
+    /// </summary>
+    public class UserOperationException:Exception
+    {
+
+
+        public UserOperationException() { }
+        public UserOperationException(string message) : base(message) { }
+
+        public UserOperationException(string message, Exception exception) : base(message, exception) { }
+
+
+    }
+}

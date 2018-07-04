@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 using System.IO;
+using TodoApi.Infrastructure.Filter;
 
 namespace TodoApi
 {
@@ -49,7 +50,14 @@ namespace TodoApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlfile);
                 option.IncludeXmlComments(xmlPath);
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(option =>
+            {
+                //全局异常处理
+                option.Filters.Add(typeof(GlobalExceptionFilter));
+                //模型验证
+                option.Filters.Add(typeof(ValidateModelFilter));
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +74,7 @@ namespace TodoApi
 
             app.UseHttpsRedirection();
 
-            app.UseSwagger();         
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
