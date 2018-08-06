@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EFCoreLearn.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +12,7 @@ namespace EFCoreLearn.Migrations
                 columns: table => new
                 {
                     BlogId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true)
                 },
@@ -25,9 +26,12 @@ namespace EFCoreLearn.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    OrderAddress_Street = table.Column<string>(nullable: true),
-                    OrderAddress_City = table.Column<string>(nullable: true)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Test1 = table.Column<string>(nullable: true),
+                    Test2 = table.Column<string>(nullable: true),
+                    Address_Street = table.Column<string>(nullable: true),
+                    Address_City = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -39,7 +43,7 @@ namespace EFCoreLearn.Migrations
                 columns: table => new
                 {
                     PostId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     BlogId = table.Column<int>(nullable: false)
@@ -79,6 +83,7 @@ namespace EFCoreLearn.Migrations
                 name: "IX_Post_BlogId",
                 table: "Post",
                 column: "BlogId");
+          
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

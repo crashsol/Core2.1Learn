@@ -29,7 +29,11 @@ namespace EFCoreLearn
         {
             services.AddDbContext<TestDbcontext>(option =>
             {
-                option.UseSqlite("Data Source=data.db");
+                option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), config =>
+                {
+                    config.MaxBatchSize(2000);
+                    config.EnableRetryOnFailure(5);
+                });
             });
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

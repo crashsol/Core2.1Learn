@@ -11,6 +11,12 @@ namespace EFCoreLearn.Models
 
         public int Id { get; set; }
 
-        public Address OrderAddress { get; set; }
+        public string Name { get; set; }
+
+        public string Test1 { get; set; }
+
+        public string Test2 { get; set; }
+
+        public Address Address { get; set; } 
     }
 }

@@ -3,25 +3,29 @@ using System;
 using EFCoreLearn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCoreLearn.Migrations
 {
     [DbContext(typeof(TestDbcontext))]
-    [Migration("20180531123505_init")]
-    partial class init
+    [Migration("20180806064627_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.0-rtm-30799");
+                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("EFCoreLearn.Models.Blog", b =>
                 {
                     b.Property<int>("BlogId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name");
 
@@ -39,7 +43,14 @@ namespace EFCoreLearn.Migrations
             modelBuilder.Entity("EFCoreLearn.Models.Order", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Test1");
+
+                    b.Property<string>("Test2");
 
                     b.HasKey("Id");
 
@@ -49,7 +60,8 @@ namespace EFCoreLearn.Migrations
             modelBuilder.Entity("EFCoreLearn.Models.Post", b =>
                 {
                     b.Property<int>("PostId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BlogId");
 
@@ -72,9 +84,11 @@ namespace EFCoreLearn.Migrations
 
             modelBuilder.Entity("EFCoreLearn.Models.Order", b =>
                 {
-                    b.OwnsOne("EFCoreLearn.Models.Address", "OrderAddress", b1 =>
+                    b.OwnsOne("EFCoreLearn.Models.Address", "Address", b1 =>
                         {
-                            b1.Property<int?>("OrderId");
+                            b1.Property<int?>("OrderId")
+                                .ValueGeneratedOnAdd()
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("City");
 
@@ -83,7 +97,7 @@ namespace EFCoreLearn.Migrations
                             b1.ToTable("Order");
 
                             b1.HasOne("EFCoreLearn.Models.Order")
-                                .WithOne("OrderAddress")
+                                .WithOne("Address")
                                 .HasForeignKey("EFCoreLearn.Models.Address", "OrderId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
