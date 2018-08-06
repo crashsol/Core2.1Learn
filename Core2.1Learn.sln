@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApi", "src\TodoApi\Todo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorize_Policy_Provider", "Authorize_Policy_Provider\Authorize_Policy_Provider.csproj", "{F3A9E60C-645E-4BA3-94B9-2C87EF3F1A83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "反射", "反射\反射.csproj", "{B041FF78-F773-4F03-BCAB-FB89523B4B22}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,10 +35,6 @@ Global
 		{F3A9E60C-645E-4BA3-94B9-2C87EF3F1A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3A9E60C-645E-4BA3-94B9-2C87EF3F1A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3A9E60C-645E-4BA3-94B9-2C87EF3F1A83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B041FF78-F773-4F03-BCAB-FB89523B4B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B041FF78-F773-4F03-BCAB-FB89523B4B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B041FF78-F773-4F03-BCAB-FB89523B4B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B041FF78-F773-4F03-BCAB-FB89523B4B22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
