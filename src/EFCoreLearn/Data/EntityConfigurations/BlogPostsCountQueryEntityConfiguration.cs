@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using EFCoreLearn.Models;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ namespace EFCoreLearn.Data.EntityConfigurations
         {
             //配置视图查询
             builder.ToView("View_BlogPostCounts")
-                    .Property(b => b.BlogName).HasColumnName("Name");
+                    .Property(b => b.BlogName).HasColumnName("Name");         
         }
     }
 }

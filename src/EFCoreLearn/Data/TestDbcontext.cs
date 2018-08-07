@@ -30,6 +30,28 @@ namespace EFCoreLearn.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            ///获取所有的实体类
+            foreach (var item in modelBuilder.Model.GetEntityTypes())
+            {
+               if(!item.ClrType.Name.Equals("BlogPostsCount"))
+                {
+                    //统一设置所有表名称
+                    modelBuilder.Entity(item.Name).ToTable(item.ClrType.Name);
+                }
+        
+
+           
+
+
+                //所有类中所有string类型的属性
+                foreach (var property in item.GetProperties().Where(b=>b.ClrType == typeof(string)))
+                {
+                    //设置所有的string最大长度为50
+                    property.SetMaxLength(80);
+                }
+
+            }
+
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EFCoreLearn.Migrations
 {
-    public partial class Init : Migration
+    public partial class dd2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,8 @@ namespace EFCoreLearn.Migrations
                 {
                     BlogId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Url = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 80, nullable: true),
+                    Url = table.Column<string>(maxLength: 80, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,11 +27,9 @@ namespace EFCoreLearn.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Test1 = table.Column<string>(nullable: true),
-                    Test2 = table.Column<string>(nullable: true),
-                    Address_Street = table.Column<string>(nullable: true),
-                    Address_City = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 80, nullable: true),
+                    Test1 = table.Column<string>(maxLength: 80, nullable: true),
+                    Test2 = table.Column<string>(maxLength: 120, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -44,8 +42,8 @@ namespace EFCoreLearn.Migrations
                 {
                     PostId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(maxLength: 80, nullable: true),
+                    Content = table.Column<string>(maxLength: 80, nullable: true),
                     BlogId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -56,6 +54,25 @@ namespace EFCoreLearn.Migrations
                         column: x => x.BlogId,
                         principalTable: "Blog",
                         principalColumn: "BlogId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Address",
+                columns: table => new
+                {
+                    Street = table.Column<string>(maxLength: 80, nullable: true),
+                    City = table.Column<string>(maxLength: 80, nullable: true),
+                    OrderId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Address", x => x.OrderId);
+                    table.ForeignKey(
+                        name: "FK_Address_Order_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Order",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -83,16 +100,18 @@ namespace EFCoreLearn.Migrations
                 name: "IX_Post_BlogId",
                 table: "Post",
                 column: "BlogId");
-          
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Order");
+                name: "Address");
 
             migrationBuilder.DropTable(
                 name: "Post");
+
+            migrationBuilder.DropTable(
+                name: "Order");
 
             migrationBuilder.DropTable(
                 name: "Blog");

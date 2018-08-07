@@ -12,8 +12,6 @@ namespace EFCoreLearn.Data.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Blog> builder)
         {
-
-            builder.ToTable("Blog");
             builder.HasData(new Blog { BlogId = 1, Name = "1", Url = "www" });
 
         }

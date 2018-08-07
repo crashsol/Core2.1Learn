@@ -13,9 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApi", "src\TodoApi\Todo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorize_Policy_Provider", "Authorize_Policy_Provider\Authorize_Policy_Provider.csproj", "{F3A9E60C-645E-4BA3-94B9-2C87EF3F1A83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dockerTest", "src\dockerTest\dockerTest.csproj", "{16A17B80-DE25-476F-B1B1-38496642AB53}"
-EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5B07F569-6ED9-4C6E-8E1A-F8BB1DC7AC91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dockerTest", "src\dockerTest\dockerTest.csproj", "{16A17B80-DE25-476F-B1B1-38496642AB53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +41,6 @@ Global
 		{16A17B80-DE25-476F-B1B1-38496642AB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16A17B80-DE25-476F-B1B1-38496642AB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16A17B80-DE25-476F-B1B1-38496642AB53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B07F569-6ED9-4C6E-8E1A-F8BB1DC7AC91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B07F569-6ED9-4C6E-8E1A-F8BB1DC7AC91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B07F569-6ED9-4C6E-8E1A-F8BB1DC7AC91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B07F569-6ED9-4C6E-8E1A-F8BB1DC7AC91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

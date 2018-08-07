@@ -2,7 +2,7 @@
 
 namespace EFCoreLearn.Migrations
 {
-    public partial class CreateView : Migration
+    public partial class dd3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

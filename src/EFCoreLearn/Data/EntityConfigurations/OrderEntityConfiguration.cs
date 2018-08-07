@@ -15,10 +15,11 @@ namespace EFCoreLearn.Data.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.ToTable("Order");
+       
             //配置Address为 拥有的实体类型 Address 的属性将出现在 Order 表中
             builder.OwnsOne(b => b.Address);
-           
+
+            builder.Property(b => b.Test2).HasMaxLength(120);           
        
         }
     }

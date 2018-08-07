@@ -38,7 +38,8 @@ namespace EFCoreLearn.Controllers
         [HttpGet]
         public async Task<ActionResult<List<BlogPostsCount>>> GetBlogsCountAsync()
         {
-            return await _dbContext.BlogPostsCounts.ToListAsync();
+            return Ok();
+            //return await _dbContext.BlogPostsCounts.ToListAsync();
         }
 
 

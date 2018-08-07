@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreLearn.Migrations
 {
     [DbContext(typeof(TestDbcontext))]
-    [Migration("20180806065905_CreateView")]
-    partial class CreateView
+    [Migration("20180807013032_dd3")]
+    partial class dd3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,9 +27,11 @@ namespace EFCoreLearn.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasMaxLength(80);
 
-                    b.Property<string>("Url");
+                    b.Property<string>("Url")
+                        .HasMaxLength(80);
 
                     b.HasKey("BlogId");
 
@@ -46,11 +48,14 @@ namespace EFCoreLearn.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasMaxLength(80);
 
-                    b.Property<string>("Test1");
+                    b.Property<string>("Test1")
+                        .HasMaxLength(80);
 
-                    b.Property<string>("Test2");
+                    b.Property<string>("Test2")
+                        .HasMaxLength(120);
 
                     b.HasKey("Id");
 
@@ -65,9 +70,11 @@ namespace EFCoreLearn.Migrations
 
                     b.Property<int>("BlogId");
 
-                    b.Property<string>("Content");
+                    b.Property<string>("Content")
+                        .HasMaxLength(80);
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .HasMaxLength(80);
 
                     b.HasKey("PostId");
 
@@ -86,15 +93,15 @@ namespace EFCoreLearn.Migrations
                 {
                     b.OwnsOne("EFCoreLearn.Models.Address", "Address", b1 =>
                         {
-                            b1.Property<int?>("OrderId")
-                                .ValueGeneratedOnAdd()
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                            b1.Property<int?>("OrderId");
 
-                            b1.Property<string>("City");
+                            b1.Property<string>("City")
+                                .HasMaxLength(80);
 
-                            b1.Property<string>("Street");
+                            b1.Property<string>("Street")
+                                .HasMaxLength(80);
 
-                            b1.ToTable("Order");
+                            b1.ToTable("Address");
 
                             b1.HasOne("EFCoreLearn.Models.Order")
                                 .WithOne("Address")
