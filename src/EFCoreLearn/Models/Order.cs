@@ -17,6 +17,10 @@ namespace EFCoreLearn.Models
 
         public string Test2 { get; set; }
 
+        public decimal ddd { get; set; }
+
+        public Guid TestGuid { get; set; }
+
         public Address Address { get; set; } 
     }
 }

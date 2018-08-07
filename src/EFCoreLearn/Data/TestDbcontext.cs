@@ -13,7 +13,7 @@ namespace EFCoreLearn.Data
 {
     public class TestDbcontext : DbContext
     {
-        public TestDbcontext(DbContextOptions<TestDbcontext> options) : base(options) { }
+        public TestDbcontext(DbContextOptions<TestDbcontext> options) : base(options) {}
 
         public DbSet<Order> Orders { get; set; }
 
@@ -56,6 +56,21 @@ namespace EFCoreLearn.Data
 
 
 
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            ChangeTracker.DetectChanges();
+            foreach (var item in ChangeTracker.Entries().Where(e=>e.State ==EntityState.Added))
+            {
+                this.AddRange(item.Entity);
+            }
+            //关闭追踪
+            ChangeTracker.AutoDetectChangesEnabled = false;
+            var result = base.SaveChanges(acceptAllChangesOnSuccess);
+            //开启追踪
+            ChangeTracker.AutoDetectChangesEnabled = true;
+            return result;
         }
     }
 }

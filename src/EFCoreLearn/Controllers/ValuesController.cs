@@ -22,9 +22,14 @@ namespace EFCoreLearn.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public async Task<ActionResult<string>> GetAsync()
         {
-            return new string[] { "value1", "value2" };
+            for (int i = 0; i < 1000; i++)
+            {
+                _dbContext.Orders.AddRange(new Order { ddd = 1, Name = "GGGGGG", Test1 = "1231231", Test2 = "11", Address = new Address { City = "DY", Street = "文庙" } });
+            }
+            await _dbContext.SaveChangesAsync(true);
+            return Ok("ok");
         }
 
         // GET api/values/5
@@ -34,12 +39,19 @@ namespace EFCoreLearn.Controllers
             return "value";
         }
 
+        [HttpGet("search/{name}")]
+        public IActionResult Search(string name)
+        {
+            return Ok(_dbContext.Orders.AsNoTracking().Where(b => EF.Functions.Like(b.Name, $"[{name}]%")).ToList());
+
+        }
+
         [Route("blogsconut")]
         [HttpGet]
         public async Task<ActionResult<List<BlogPostsCount>>> GetBlogsCountAsync()
         {
-            return Ok();
-            //return await _dbContext.BlogPostsCounts.ToListAsync();
+            
+           return await _dbContext.BlogPostsCounts.ToListAsync();
         }
 
 

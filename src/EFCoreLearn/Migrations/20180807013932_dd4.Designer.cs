@@ -4,14 +4,16 @@ using EFCoreLearn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCoreLearn.Migrations
 {
     [DbContext(typeof(TestDbcontext))]
-    partial class TestDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20180807013932_dd4")]
+    partial class dd4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,12 +57,7 @@ namespace EFCoreLearn.Migrations
                     b.Property<string>("Test2")
                         .HasMaxLength(120);
 
-                    b.Property<Guid>("TestGuid")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("NEWID()");
-
-                    b.Property<decimal>("ddd")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<decimal>("ddd");
 
                     b.HasKey("Id");
 

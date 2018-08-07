@@ -19,8 +19,11 @@ namespace EFCoreLearn.Data.EntityConfigurations
             //配置Address为 拥有的实体类型 Address 的属性将出现在 Order 表中
             builder.OwnsOne(b => b.Address);
 
-            builder.Property(b => b.Test2).HasMaxLength(120);           
-       
+            builder.Property(b => b.Test2).HasMaxLength(120);
+            builder.Property(b => b.ddd).HasColumnType("decimal(18,2)");
+
+            builder.Property(b => b.TestGuid).HasDefaultValueSql("NEWID()");
+           
         }
     }
 }

@@ -30,7 +30,7 @@ namespace EFCoreLearn
             services.AddDbContext<TestDbcontext>(option =>
             {
                 option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), config =>
-                {
+                {               
                     config.MaxBatchSize(2000);
                     config.EnableRetryOnFailure(5);
                 });
