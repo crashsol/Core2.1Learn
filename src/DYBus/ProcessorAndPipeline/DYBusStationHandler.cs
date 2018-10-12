@@ -37,6 +37,7 @@ namespace DYBus.ProcessorAndPipeline
                 }
             
                 AddEntityType<BusStation>();
+                AddEntityType<BusLineCarBatchNo>();
                 AddPipeline(new ConsoleEntityPipeline());
                 AddPipeline(new SqlServerEntityPipeline("Server=.\\SQLEXPRESS;uid=sa;pwd=123qwe!@#;Database=DyBus;Trusted_Connection=True;MultipleActiveResultSets=true"));
             }
@@ -52,14 +53,14 @@ namespace DYBus.ProcessorAndPipeline
                 /// <summary>
                 /// 车次信息
                 /// </summary>
-                [Column]
+                [Column]             
                 [Field(Expression = "Keyword", Type = SelectorType.Enviroment)]
                 public string Keyword { get; set; }
 
                 /// <summary>
                 /// 车站唯一ID
                 /// </summary>
-                [Column]
+                [Column]            
                 [Field(Expression = "./@Id")]
                 public string BusStationId { get; set; }
 
@@ -67,14 +68,14 @@ namespace DYBus.ProcessorAndPipeline
                 /// <summary>
                 /// 车次路线编号
                 /// </summary>
-                [Column]
+                [Column]               
                 [Field(Expression = "./strong/text()")]
                 public string StationNumber { get; set; }
 
                 /// <summary>
                 /// 车站名称
                 /// </summary>
-                [Column]
+                [Column]             
                 [Field(Expression = "./span/text()")]
                 public string Name { get; set; }
 
@@ -87,6 +88,24 @@ namespace DYBus.ProcessorAndPipeline
 
             }
 
+
+            /// <summary>
+            /// 获取当前路线所有的车辆信息
+            /// </summary>
+            /// 
+            [Schema("DYBus", "BusLineCarBatchNo")]
+            [Entity(Expression = ".//div[@class='buslist']/div[@class='z']/p",Type =SelectorType.XPath)]
+            class BusLineCarBatchNo: BaseEntity
+            {
+                [Column]               
+                [Field(Expression = "Keyword", Type = SelectorType.Enviroment)]
+                public string Keyword { get; set; }
+
+                [Field(Expression ="./@Id")]                
+                [Column]
+                public string BUS_ID { get; set; }
+
+            }
         }
     }
 }
