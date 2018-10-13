@@ -118,7 +118,7 @@ namespace DYBus
                                                                 b.IsAtFinalStop== infoArray[5]))
                                             {
 
-                                                if(!(infoArray[5] == "0" && infoArray[2] !="1" && infoArray[2]!="5"))
+                                                if( infoArray[2] =="1" && infoArray[2]!="5")
                                                 {
                                                     dic[busline].Add(new BusRunTimeInfo
                                                     {
