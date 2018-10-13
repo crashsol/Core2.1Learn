@@ -25,8 +25,6 @@ namespace DYBus.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AheadStationNo");
-
                     b.Property<string>("BeforeStationNo");
 
                     b.Property<string>("BusCarNo");
@@ -37,7 +35,9 @@ namespace DYBus.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<string>("IsAtFinalStop");
+                    b.Property<string>("CurrentStationNo");
+
+                    b.Property<string>("IsBusStop");
 
                     b.Property<string>("RoadNum");
 

@@ -62,7 +62,7 @@ namespace DYBus
             //获取所有车站信息
             if(configuration["DownloadBusLineInfo"] == "true")
             {
-                DYBusStationHandler.Run();
+               // DYBusStationHandler.Run();
             }           
             Console.WriteLine("启动程序,开始获取当前公交车信息");
             var httpClientFactory = serviceProvider.GetService<IHttpClientFactory>();
@@ -79,7 +79,7 @@ namespace DYBus
                     Console.WriteLine($"{busline} 启动获取数据----{dic[busline].Count}");
                     while (true)
                     {
-                        if (dic[busline].Count > 30)
+                        if (dic[busline].Count > 50)
                         {
                             lock (lockobj)
                             {
@@ -87,8 +87,9 @@ namespace DYBus
                                 var _dbContext = serviceProvider.GetRequiredService<BusDbContent>();
                                 _dbContext.AddRange(dic[busline]);
                                 _dbContext.SaveChanges();
-                                Console.WriteLine($"{busline} 开始插入数据");
                                 dic[busline].Clear();
+                                Console.WriteLine($"{busline} 开始插入数据");                               
+                             
                             }
                         }
                         var result = await httpClient.GetStringAsync($"http://wapapp.dy4g.cn/bus/auto/test.php?t=busdb&busline={busline}");
@@ -108,41 +109,39 @@ namespace DYBus
                                         if (infoArray.Length == 6)
                                         {
                                             //如果存在相同的数据就不记录了
-                                            if(!dic[busline].Any(b=>
+                                            if (!dic[busline].Any(b =>
                                                                 b.RoadNum == busline &&
                                                                 b.BusRunDirection == infoArray[1] &&
-                                                                b.BusCarNo == infoArray[0] && 
+                                                                b.BusCarNo == "BUSID_" + infoArray[0] &&
                                                                 b.BusStatus == infoArray[2] &&
-                                                                b.BeforeStationNo == infoArray[3] &&
-                                                                b.AheadStationNo ==infoArray[4] &&
-                                                                b.IsAtFinalStop== infoArray[5]))
+                                                                b.BeforeStationNo == ("BUSSTOPNO_"+ infoArray[3]) &&
+                                                                b.CurrentStationNo == ("BUSSTOPNO_"+infoArray[4]) &&
+                                                                b.IsBusStop == infoArray[5]))
                                             {
-
-                                                if( infoArray[2] =="1" && infoArray[2]!="5")
+                                                ///汽车到站
+                                                if(!(infoArray[5]=="0" &&infoArray[2]!="1" && infoArray[2]!="5"))
                                                 {
                                                     dic[busline].Add(new BusRunTimeInfo
                                                     {
                                                         RoadNum = busline,
-                                                        BusCarNo = infoArray[0],
+                                                        BusCarNo = "BUSID_"+ infoArray[0],
                                                         BusRunDirection = infoArray[1],
                                                         BusStatus = infoArray[2],
-                                                        BeforeStationNo = infoArray[3],
-                                                        AheadStationNo = infoArray[4],
-                                                        IsAtFinalStop = infoArray[5],
+                                                        BeforeStationNo = "BUSSTOPNO_" + infoArray[3],
+                                                        CurrentStationNo = "BUSSTOPNO_"+ infoArray[4],
+                                                        IsBusStop = infoArray[5],
                                                         CreateTime = DateTime.Now
                                                     });
-                                                }
-                                                
+                                                }                                               
                                             }
-                                           
+
                                         }
-
-
                                     }
 
                                 }
                             }
-                        }                        
+                        }
+                        Console.WriteLine($"{busline}路线当前获取到数据:{dic[busline].Count}");
                         await Task.Delay(3000);
                     }
                 });

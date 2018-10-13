@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace DYBus.Models
 {
      public  class BusRunTimeInfo
     {
-         
+        [Key]
         public long Id { get; set; }
 
         /// <summary>
@@ -42,15 +43,15 @@ namespace DYBus.Models
         /// <summary>
         /// 驶向下一站的车站编号
         /// </summary>
-        public string AheadStationNo { get; set; }
+        public string CurrentStationNo { get; set; } 
 
 
         /// <summary>
-        /// 是否停在终点站
+        /// 是否在站台停站
         /// 1 是
         /// 0 否
         /// </summary>
-        public string IsAtFinalStop { get; set; }
+        public string IsBusStop { get; set; }  
 
         public DateTime CreateTime { get; set; } = DateTime.Now;
 

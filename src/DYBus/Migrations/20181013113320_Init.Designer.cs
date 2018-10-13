@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DYBus.Migrations
 {
     [DbContext(typeof(BusDbContent))]
-    [Migration("20181011120135_Init")]
+    [Migration("20181013113320_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,8 +27,6 @@ namespace DYBus.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AheadStationNo");
-
                     b.Property<string>("BeforeStationNo");
 
                     b.Property<string>("BusCarNo");
@@ -39,7 +37,9 @@ namespace DYBus.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<string>("IsAtFinalStop");
+                    b.Property<string>("CurrentStationNo");
+
+                    b.Property<string>("IsBusStop");
 
                     b.Property<string>("RoadNum");
 

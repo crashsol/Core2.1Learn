@@ -19,8 +19,8 @@ namespace DYBus.Migrations
                     BusRunDirection = table.Column<string>(nullable: true),
                     BusStatus = table.Column<string>(nullable: true),
                     BeforeStationNo = table.Column<string>(nullable: true),
-                    AheadStationNo = table.Column<string>(nullable: true),
-                    IsAtFinalStop = table.Column<string>(nullable: true),
+                    CurrentStationNo = table.Column<string>(nullable: true),
+                    IsBusStop = table.Column<string>(nullable: true),
                     CreateTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
