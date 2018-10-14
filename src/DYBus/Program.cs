@@ -62,7 +62,7 @@ namespace DYBus
             //获取所有车站信息
             if(configuration["DownloadBusLineInfo"] == "true")
             {
-               // DYBusStationHandler.Run();
+                DYBusStationHandler.Run();
             }           
             Console.WriteLine("启动程序,开始获取当前公交车信息");
             var httpClientFactory = serviceProvider.GetService<IHttpClientFactory>();
