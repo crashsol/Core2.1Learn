@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorize_Policy_Provider",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dockerTest", "src\dockerTest\dockerTest.csproj", "{16A17B80-DE25-476F-B1B1-38496642AB53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DYBus", "src\DYBus\DYBus.csproj", "{C64E33CE-250C-4F7E-A8BA-4A32A8B97825}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,10 +41,6 @@ Global
 		{16A17B80-DE25-476F-B1B1-38496642AB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16A17B80-DE25-476F-B1B1-38496642AB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16A17B80-DE25-476F-B1B1-38496642AB53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C64E33CE-250C-4F7E-A8BA-4A32A8B97825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C64E33CE-250C-4F7E-A8BA-4A32A8B97825}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C64E33CE-250C-4F7E-A8BA-4A32A8B97825}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C64E33CE-250C-4F7E-A8BA-4A32A8B97825}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,7 +51,6 @@ Global
 		{12FABD19-2926-49A3-9AFD-6C69525B0091} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 		{F3A9E60C-645E-4BA3-94B9-2C87EF3F1A83} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 		{16A17B80-DE25-476F-B1B1-38496642AB53} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
-		{C64E33CE-250C-4F7E-A8BA-4A32A8B97825} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BD03B15-0650-4A2E-8129-B7BC57D78816}

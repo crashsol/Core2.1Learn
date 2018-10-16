@@ -64,90 +64,90 @@ namespace DYBus
             {
                 DYBusStationHandler.Run();
             }           
-            Console.WriteLine("启动程序,开始获取当前公交车信息");
-            var httpClientFactory = serviceProvider.GetService<IHttpClientFactory>();
-            var httpClient = httpClientFactory.CreateClient("DYBUS");
+            //Console.WriteLine("启动程序,开始获取当前公交车信息");
+            //var httpClientFactory = serviceProvider.GetService<IHttpClientFactory>();
+            //var httpClient = httpClientFactory.CreateClient("DYBUS");
 
-            Dictionary<string, List<BusRunTimeInfo>> dic = new Dictionary<string, List<BusRunTimeInfo>>();
-            foreach (var item in BusLines.Lines)
-            {
-                //记录当前公交路线
-                var busline = item;
-                dic.Add(busline, new List<BusRunTimeInfo>() { });
-                Task.Factory.StartNew(async () =>
-                {
-                    Console.WriteLine($"{busline} 启动获取数据----{dic[busline].Count}");
-                    while (true)
-                    {
-                        if (dic[busline].Count > 50)
-                        {
-                            lock (lockobj)
-                            {
-                                Console.WriteLine($"{busline} 开始插入数据");
-                                var _dbContext = serviceProvider.GetRequiredService<BusDbContent>();
-                                _dbContext.AddRange(dic[busline]);
-                                _dbContext.SaveChanges();
-                                dic[busline].Clear();
-                                Console.WriteLine($"{busline} 开始插入数据");                               
+            //Dictionary<string, List<BusRunTimeInfo>> dic = new Dictionary<string, List<BusRunTimeInfo>>();
+            //foreach (var item in BusLines.Lines)
+            //{
+            //    //记录当前公交路线
+            //    var busline = item;
+            //    dic.Add(busline, new List<BusRunTimeInfo>() { });
+            //    Task.Factory.StartNew(async () =>
+            //    {
+            //        Console.WriteLine($"{busline} 启动获取数据----{dic[busline].Count}");
+            //        while (true)
+            //        {
+            //            if (dic[busline].Count > 50)
+            //            {
+            //                lock (lockobj)
+            //                {
+            //                    Console.WriteLine($"{busline} 开始插入数据");
+            //                    var _dbContext = serviceProvider.GetRequiredService<BusDbContent>();
+            //                    _dbContext.AddRange(dic[busline]);
+            //                    _dbContext.SaveChanges();
+            //                    dic[busline].Clear();
+            //                    Console.WriteLine($"{busline} 开始插入数据");                               
                              
-                            }
-                        }
-                        var result = await httpClient.GetStringAsync($"http://wapapp.dy4g.cn/bus/auto/test.php?t=busdb&busline={busline}");
-                        if (!string.IsNullOrEmpty(result))
-                        {
-                            if (result.Length > 10)
-                            {
-                                var listBUSNO = result.Split(';');
-                                foreach (var busnoItem in listBUSNO)
-                                {
-                                    int start = busnoItem.IndexOf("(");
-                                    int end = busnoItem.IndexOf(")");
-                                    if (end - start > 1)
-                                    {
-                                        var usefulInfo = busnoItem.Substring(start + 1, end - start - 1);
-                                        var infoArray = usefulInfo.Split(",");
-                                        if (infoArray.Length == 6)
-                                        {
-                                            //如果存在相同的数据就不记录了
-                                            if (!dic[busline].Any(b =>
-                                                                b.RoadNum == busline &&
-                                                                b.BusRunDirection == infoArray[1] &&
-                                                                b.BusCarNo == "BUSID_" + infoArray[0] &&
-                                                                b.BusStatus == infoArray[2] &&
-                                                                b.BeforeStationNo == ("BUSSTOPNO_"+ infoArray[3]) &&
-                                                                b.CurrentStationNo == ("BUSSTOPNO_"+infoArray[4]) &&
-                                                                b.IsBusStop == infoArray[5]))
-                                            {
-                                                ///汽车到站
-                                                if(!(infoArray[5]=="0" &&infoArray[2]!="1" && infoArray[2]!="5"))
-                                                {
-                                                    dic[busline].Add(new BusRunTimeInfo
-                                                    {
-                                                        RoadNum = busline,
-                                                        BusCarNo = "BUSID_"+ infoArray[0],
-                                                        BusRunDirection = infoArray[1],
-                                                        BusStatus = infoArray[2],
-                                                        BeforeStationNo = "BUSSTOPNO_" + infoArray[3],
-                                                        CurrentStationNo = "BUSSTOPNO_"+ infoArray[4],
-                                                        IsBusStop = infoArray[5],
-                                                        CreateTime = DateTime.Now
-                                                    });
-                                                }                                               
-                                            }
+            //                }
+            //            }
+            //            var result = await httpClient.GetStringAsync($"http://wapapp.dy4g.cn/bus/auto/test.php?t=busdb&busline={busline}");
+            //            if (!string.IsNullOrEmpty(result))
+            //            {
+            //                if (result.Length > 10)
+            //                {
+            //                    var listBUSNO = result.Split(';');
+            //                    foreach (var busnoItem in listBUSNO)
+            //                    {
+            //                        int start = busnoItem.IndexOf("(");
+            //                        int end = busnoItem.IndexOf(")");
+            //                        if (end - start > 1)
+            //                        {
+            //                            var usefulInfo = busnoItem.Substring(start + 1, end - start - 1);
+            //                            var infoArray = usefulInfo.Split(",");
+            //                            if (infoArray.Length == 6)
+            //                            {
+            //                                //如果存在相同的数据就不记录了
+            //                                if (!dic[busline].Any(b =>
+            //                                                    b.RoadNum == busline &&
+            //                                                    b.BusRunDirection == infoArray[1] &&
+            //                                                    b.BusCarNo == "BUSID_" + infoArray[0] &&
+            //                                                    b.BusStatus == infoArray[2] &&
+            //                                                    b.BeforeStationNo == ("BUSSTOPNO_"+ infoArray[3]) &&
+            //                                                    b.CurrentStationNo == ("BUSSTOPNO_"+infoArray[4]) &&
+            //                                                    b.IsBusStop == infoArray[5]))
+            //                                {
+            //                                    ///汽车到站
+            //                                    if(!(infoArray[5]=="0" &&infoArray[2]!="1" && infoArray[2]!="5"))
+            //                                    {
+            //                                        dic[busline].Add(new BusRunTimeInfo
+            //                                        {
+            //                                            RoadNum = busline,
+            //                                            BusCarNo = "BUSID_"+ infoArray[0],
+            //                                            BusRunDirection = infoArray[1],
+            //                                            BusStatus = infoArray[2],
+            //                                            BeforeStationNo = "BUSSTOPNO_" + infoArray[3],
+            //                                            CurrentStationNo = "BUSSTOPNO_"+ infoArray[4],
+            //                                            IsBusStop = infoArray[5],
+            //                                            CreateTime = DateTime.Now
+            //                                        });
+            //                                    }                                               
+            //                                }
 
-                                        }
-                                    }
+            //                            }
+            //                        }
 
-                                }
-                            }
-                        }
-                        Console.WriteLine($"{busline}路线当前获取到数据:{dic[busline].Count}");
-                        await Task.Delay(3000);
-                    }
-                });
-            }
+            //                    }
+            //                }
+            //            }
+            //            Console.WriteLine($"{busline}路线当前获取到数据:{dic[busline].Count}");
+            //            await Task.Delay(3000);
+            //        }
+            //    });
+            //}
 
-            Console.WriteLine("正在获取数据....");
+            //Console.WriteLine("正在获取数据....");
             Console.ReadKey();
         }
 

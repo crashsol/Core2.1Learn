@@ -39,7 +39,8 @@ namespace DYBus.ProcessorAndPipeline
                 AddEntityType<BusStation>();
                 AddEntityType<BusLineCarBatchNo>();
                 AddPipeline(new ConsoleEntityPipeline());
-                AddPipeline(new SqlServerEntityPipeline("Server=.\\SQLEXPRESS;uid=sa;pwd=123qwe!@#;Database=DyBus;Trusted_Connection=True;MultipleActiveResultSets=true"));
+                AddPipeline(new MySqlEntityPipeline("Database='BusStation';Data Source=118.24.150.217;User ID=root;Password=123qwe!@#QWE;Port=3306;SslMode=None;"));
+                //AddPipeline(new SqlServerEntityPipeline("Server=.\\SQLEXPRESS;uid=sa;pwd=123qwe!@#;Database=DyBus;Trusted_Connection=True;MultipleActiveResultSets=true"));
             }
 
 
