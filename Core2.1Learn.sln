@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dockerTest", "src\dockerTes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangfireApp", "src\HangfireApp\HangfireApp.csproj", "{B7651647-F7ED-4C18-A183-1C5938EA0AE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWithIdentityMysql", "src\AppWithIdentityMysql\AppWithIdentityMysql.csproj", "{77770591-3B16-4A36-B788-D721FAF486D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppWithIdentityMysql", "src\AppWithIdentityMysql\AppWithIdentityMysql.csproj", "{77770591-3B16-4A36-B788-D721FAF486D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCSRedis", "src\AppCSRedis\AppCSRedis.csproj", "{3D9584AD-F0B1-4FAA-8697-F856221B50E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCSRedis", "src\AppCSRedis\AppCSRedis.csproj", "{3D9584AD-F0B1-4FAA-8697-F856221B50E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppGraph", "src\AppGraph\AppGraph.csproj", "{67452241-764E-41BD-AE66-331B0456536D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{3D9584AD-F0B1-4FAA-8697-F856221B50E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D9584AD-F0B1-4FAA-8697-F856221B50E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D9584AD-F0B1-4FAA-8697-F856221B50E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67452241-764E-41BD-AE66-331B0456536D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67452241-764E-41BD-AE66-331B0456536D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67452241-764E-41BD-AE66-331B0456536D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67452241-764E-41BD-AE66-331B0456536D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{B7651647-F7ED-4C18-A183-1C5938EA0AE9} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 		{77770591-3B16-4A36-B788-D721FAF486D7} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 		{3D9584AD-F0B1-4FAA-8697-F856221B50E9} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
+		{67452241-764E-41BD-AE66-331B0456536D} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BD03B15-0650-4A2E-8129-B7BC57D78816}
