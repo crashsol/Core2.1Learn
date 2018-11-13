@@ -39,9 +39,16 @@ namespace LearnGrap.Api
             services.AddSingleton<MovieType>();
             services.AddSingleton<ActorType>();
             services.AddSingleton<MovieRatingType>();
+
+            //输入类型
+            services.AddSingleton<MovieInputType>();
            
             //注册查询
             services.AddSingleton<MovieQuery>();
+            services.AddSingleton<MovieMutation>();
+
+
+
             //注册Schema
             services.AddSingleton<MovieSchema>();
 

@@ -12,14 +12,19 @@ namespace LearnGraph.Movies.Schema
     /// 2、Mutations
     /// 3、Subscriptions
     /// </summary>
-    public class MovieSchema:GraphQL.Types.Schema
+    public class MovieSchema : GraphQL.Types.Schema
     {
 
         public MovieSchema(IDependencyResolver dependencyResolver,
-            MovieQuery movieQuery)
+            MovieQuery movieQuery,
+            MovieMutation movieMutation //添加修改Mutation
+            )
         {
             DependencyResolver = dependencyResolver;
             Query = movieQuery;
+
+            //添加修改Mutation
+            Mutation = movieMutation;
         }
     }
 }

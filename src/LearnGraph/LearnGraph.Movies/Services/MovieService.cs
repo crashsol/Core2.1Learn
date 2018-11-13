@@ -60,18 +60,27 @@ namespace LearnGraph.Movies.Services
         }
         public Task<Movie> CreateAsync(Movie movie) 
         {
-            throw new NotImplementedException();
-           
+            _movies.Add(movie);
+            return Task.FromResult(movie);
         }
 
         public Task<IEnumerable<Movie>> GetAllAsync()
         {
+           
             return Task.FromResult(_movies.AsEnumerable());
         }
 
         public Task<Movie> GetByIdAsync(int id)
         {
-            return Task.FromResult(_movies.FirstOrDefault(b => b.Id == id));         
+            var model = _movies.FirstOrDefault(b => b.Id == id);
+            if(model ==null)
+            {
+                throw new ArgumentException($"Movie Id {id} can't find");
+            }else
+            {
+
+            }
+            return Task.FromResult(model);         
         }
     }
 }
