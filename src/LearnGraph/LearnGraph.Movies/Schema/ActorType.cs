@@ -10,8 +10,8 @@ namespace LearnGraph.Movies.Schema
     {
         public ActorType()
         {
-            Name = "Actor Type";
-            Description = "Actor Description";
+            Name = "ActorType";
+            Description = "ActorDescription";
 
             Field(b => b.Id);
             Field(b => b.Name);

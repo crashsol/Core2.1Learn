@@ -31,9 +31,7 @@ namespace LearnGraph.Movies.Schema
             Field<ActorType>("actor", resolve: context =>  actorService.GetByIdAsync(context.Source.ActorId));
 
             //加载枚举变量 根据MovieRating的类型，选择 movieRating
-            Field<ListGraphType<MovieRatingType>>("movieRating", resolve: context => context.Source.MovieRating);
-
-
+            Field<MovieRatingType>("movieRating", "Which movie they appear lelve."); 
 
         }
     }
