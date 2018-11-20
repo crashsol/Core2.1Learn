@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppGraph", "src\AppGraph\Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LearnGraph", "LearnGraph", "{63A73E4A-99BD-4606-B20D-9F4EA4234EE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnGraph.Api", "src\LearnGraph\LearnGrap.Api\LearnGraph.Api.csproj", "{86804021-7191-4BF1-9E94-C4186D055681}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnGraph.Api", "src\LearnGraph\LearnGrap.Api\LearnGraph.Api.csproj", "{86804021-7191-4BF1-9E94-C4186D055681}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnGraph.Movies", "src\LearnGraph\LearnGraph.Movies\LearnGraph.Movies.csproj", "{69441755-73BC-49B6-B89C-8ACE6F89955A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnGraph.Movies", "src\LearnGraph\LearnGraph.Movies\LearnGraph.Movies.csproj", "{69441755-73BC-49B6-B89C-8ACE6F89955A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSwagApp", "src\NSwagApp\NSwagApp.csproj", "{4B806B73-1DA2-46FD-B8B7-268B6B8F4CD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{69441755-73BC-49B6-B89C-8ACE6F89955A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69441755-73BC-49B6-B89C-8ACE6F89955A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69441755-73BC-49B6-B89C-8ACE6F89955A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B806B73-1DA2-46FD-B8B7-268B6B8F4CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B806B73-1DA2-46FD-B8B7-268B6B8F4CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B806B73-1DA2-46FD-B8B7-268B6B8F4CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B806B73-1DA2-46FD-B8B7-268B6B8F4CD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +102,7 @@ Global
 		{63A73E4A-99BD-4606-B20D-9F4EA4234EE6} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 		{86804021-7191-4BF1-9E94-C4186D055681} = {63A73E4A-99BD-4606-B20D-9F4EA4234EE6}
 		{69441755-73BC-49B6-B89C-8ACE6F89955A} = {63A73E4A-99BD-4606-B20D-9F4EA4234EE6}
+		{4B806B73-1DA2-46FD-B8B7-268B6B8F4CD1} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BD03B15-0650-4A2E-8129-B7BC57D78816}
