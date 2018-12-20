@@ -24,9 +24,8 @@ namespace MongoApp.Services
         }
 
         public Book Get(string id)
-        {
-            var docId = new ObjectId(id);
-            return _dbContext.Books.Find(b => b.Id == docId).FirstOrDefault();
+        {           
+            return _dbContext.Books.Find(b => b.Id == id).FirstOrDefault();
         }
 
         public Book Create(Book book)
@@ -38,9 +37,9 @@ namespace MongoApp.Services
         public void Update(string id,Book bookin)
         {
 
-            var objId = new ObjectId(id);
-            bookin.Id = objId;
-            _dbContext.Books.ReplaceOne(b=>b.Id== objId, bookin);
+           //var objId = new ObjectId(id);
+           // bookin.Id = objId;
+            _dbContext.Books.ReplaceOne(b=>b.Id== id, bookin);
         }
 
         public void Remove(Book book)
@@ -50,7 +49,7 @@ namespace MongoApp.Services
 
         public void Remove(string id)
         {
-            _dbContext.Books.DeleteOne(b => b.Id == new ObjectId(id));
+            _dbContext.Books.DeleteOne(b => b.Id == id);
         }
     }
 }

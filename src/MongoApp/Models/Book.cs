@@ -8,7 +8,12 @@ namespace MongoApp.Models
 {
     public class Book
     { 
-        public ObjectId Id { get; set; }
+        /// <summary>
+        /// 将MongoDb组件映射成 string类型，查询是可以直接作为组件查询
+        /// </summary>
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
 
         [BsonElement("BookName")]
         public string BookName { get; set; }
