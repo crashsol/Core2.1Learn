@@ -26,16 +26,27 @@ namespace MongoApp.Controllers
         }
 
         [HttpGet("{id:length(24)}", Name = "GetBook")]
-        public ActionResult<Book> Get(string id)
+        public ApiReponse<Book> Get(string id)
         {
             var book = _bookService.Get(id);
 
             if (book == null)
             {
-                return NotFound();
+                return new ApiReponse<Book>
+                {
+                    Status ="error",
+                    Message ="数据不存在",
+                    Data=null                    
+                    
+                };
             }
-
-            return book;
+            
+            return  new ApiReponse<Book>
+            {
+                Status ="ok",
+                Message="操作成功",
+                Data = book
+            };
         }
 
         [HttpPost]
