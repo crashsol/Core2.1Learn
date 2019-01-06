@@ -24,9 +24,9 @@ namespace LinqApp
 
 
             IEnumerable<int> even = new int[]
-         {
-                2,1,3,9,5,7
-         };
+             {
+                    2,1,3,9,5,7
+             };
 
             Print("even", even);
 
@@ -51,8 +51,8 @@ namespace LinqApp
                  new Person{ Id =3,Name="3",Age=11},
                  new Person{ Id =5,Name="5"},
                     new Person{ Id =6,Name="6"},
-                new Person{ Id =7,Name="7"},          
-                  
+                new Person{ Id =7,Name="7"},
+
             };
 
             Console.WriteLine("------------------------------");
@@ -61,6 +61,48 @@ namespace LinqApp
             Print("Person Concat", c1.Concat(c2));
             Print("Person Intersect", c1.Intersect(c2));
 
+
+            Console.WriteLine("------------------------");
+
+            string[] names = { "Tom", "Dick", "Harry", "Mary", "Jay" };
+            IEnumerable<TempProjectionItem> temp = from n in names
+                                                   select new TempProjectionItem
+                                                   {
+                                                       Original = n,
+                                                       Vowellness = n.Replace("a", "").Replace("e", "").Replace("i", "").Replace("o", "").Replace("u", "")
+                                                   };
+            var temp2 = names.Select(b => new TempProjectionItem
+            {
+                Original = b,
+                Vowellness = b.Replace("a", "").Replace("e", "").Replace("i", "").Replace("o", "").Replace("u", "")
+            });
+
+            foreach (var item in temp)
+            {
+                Console.WriteLine($"{item.Original} -{item.Vowellness}");
+            }
+            Console.WriteLine("----------------------");
+            foreach (var item in temp2)
+            {
+                Console.WriteLine($"{item.Original} -{item.Vowellness}");
+            }
+
+            Console.WriteLine("--------------------------");
+            var query = from n in names
+                select new
+                {
+                    Original = n,
+                    Vowellness = n.Replace("a", "").Replace("e", "").Replace("i", "").Replace("o", "").Replace("u", "")
+                }
+                into mid
+                where mid.Vowellness.Length > 2
+                select mid.Original;
+            foreach (var item in query)
+            {
+                Console.WriteLine(item);
+            }
+
+               
 
             Console.ReadKey();
         }
@@ -77,7 +119,7 @@ namespace LinqApp
 
         public string Name { get; set; }
 
-        public int Age { get; set; } = 10;        
+        public int Age { get; set; } = 10;
 
         public override string ToString()
         {
@@ -86,32 +128,32 @@ namespace LinqApp
 
         public override bool Equals(object obj)
         {
-            if(obj ==null)
+            if (obj == null)
             { return false; }
             if (obj.GetType() != this.GetType())
             {
                 return false;
             }
-            if(this.GetHashCode()!= obj.GetHashCode())
+            if (this.GetHashCode() != obj.GetHashCode())
             {
                 return false;
             }
             Person person = obj as Person;
-            if(this.Id == person.Id && this.Name == person.Name && this.Age == person.Age)
+            if (this.Id == person.Id && this.Name == person.Name && this.Age == person.Age)
             {
                 return true;
             }
-            else {return  false; }           
+            else { return false; }
         }
 
-      
+
         public override int GetHashCode()
         {
             int hashCode = Id.GetHashCode();
             return hashCode ^= Name.GetHashCode();
         }
 
-        public static  bool operator == (Person left,Person right)
+        public static bool operator ==(Person left, Person right)
         {
             if (left is null)
             {
@@ -120,12 +162,20 @@ namespace LinqApp
             return (left.Equals(right));
         }
 
-        public static bool operator !=(Person left,Person right)
+        public static bool operator !=(Person left, Person right)
         {
             return !(left == right);
         }
 
 
+    }
+
+
+    class TempProjectionItem
+    {
+
+        public string Original { get; set; }
+        public string Vowellness { get; set; }
     }
 
 
