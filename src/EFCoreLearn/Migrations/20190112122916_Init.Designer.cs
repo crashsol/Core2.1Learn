@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreLearn.Migrations
 {
     [DbContext(typeof(TestDbcontext))]
-    [Migration("20180807014249_dd5")]
-    partial class dd5
+    [Migration("20190112122916_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -56,6 +56,10 @@ namespace EFCoreLearn.Migrations
 
                     b.Property<string>("Test2")
                         .HasMaxLength(120);
+
+                    b.Property<Guid>("TestGuid")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<decimal>("ddd")
                         .HasColumnType("decimal(18,2)");

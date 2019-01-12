@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EFCoreLearn.Migrations
 {
-    public partial class dd2 : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +30,9 @@ namespace EFCoreLearn.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 80, nullable: true),
                     Test1 = table.Column<string>(maxLength: 80, nullable: true),
-                    Test2 = table.Column<string>(maxLength: 120, nullable: true)
+                    Test2 = table.Column<string>(maxLength: 120, nullable: true),
+                    ddd = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TestGuid = table.Column<Guid>(nullable: false, defaultValueSql: "NEWID()")
                 },
                 constraints: table =>
                 {

@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Server=.;uid=sa;pwd=123qwe!@#;Database=EFCoreLearn;Trusted_Connection=True;MultipleActiveResultSets=true" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DbFirstModels
