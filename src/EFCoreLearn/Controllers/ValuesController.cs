@@ -36,10 +36,9 @@ namespace EFCoreLearn.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<string>> Get(int id)
+        public ActionResult Get(int id)
         {
-            var beef = new DbFirstModels.EFCoreLearnContext();
-            return Ok(await beef.Blog.Include(b => b.Posts).ToListAsync());
+            return Ok();
         }
 
         [HttpGet("search/{name}")]

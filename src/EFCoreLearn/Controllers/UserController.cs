@@ -28,7 +28,7 @@ namespace EFCoreLearn.Controllers
         {
             var result =  _dbcontext.SellDetails
                 .Include(b => b.Buyer)
-                .Include(b=>b.Seller)
+                .Include(b => b.Seller)
                 .ToList();
 
             return Ok(result);
@@ -37,11 +37,13 @@ namespace EFCoreLearn.Controllers
         [HttpGet("{id}")]
         public IActionResult DelteUser(int id)
         {
+
+
             _dbcontext.Users.Remove(new User() {Id = id});
             _dbcontext.SaveChanges();
             var result = _dbcontext.SellDetails
                 .Include(b => b.Buyer)
-                .Include(b => b.Seller)
+                .Include(b=>b.Seller)
                 .ToList();
 
             return Ok(result);

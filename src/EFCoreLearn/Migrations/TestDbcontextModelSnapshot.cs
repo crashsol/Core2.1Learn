@@ -109,9 +109,7 @@ namespace EFCoreLearn.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BuyerId")
-                        .IsUnique()
-                        .HasFilter("[BuyerId] IS NOT NULL");
+                    b.HasIndex("BuyerId");
 
                     b.HasIndex("SellerId");
 
@@ -176,9 +174,8 @@ namespace EFCoreLearn.Migrations
             modelBuilder.Entity("EFCoreLearn.Models.SellDetail", b =>
                 {
                     b.HasOne("EFCoreLearn.Models.User", "Buyer")
-                        .WithOne()
-                        .HasForeignKey("EFCoreLearn.Models.SellDetail", "BuyerId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .WithMany()
+                        .HasForeignKey("BuyerId");
 
                     b.HasOne("EFCoreLearn.Models.User", "Seller")
                         .WithMany()
