@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,17 @@ namespace TodoApi.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TodoItem>().ToTable("TodoItem");
+
+            modelBuilder.Entity<TodoItem>(opt =>
+            {
+
+                opt.Property<Dictionary<string, object>>(nameof(TodoItem.KeyValuePairs))
+                     .HasConversion(
+                         d => JsonConvert.SerializeObject(d, Formatting.None),
+                         s => JsonConvert.DeserializeObject<Dictionary<string, object>>(s)
+                     )
+                     .HasColumnName(nameof(TodoItem.KeyValuePairs));
+            });
         }
 
     }

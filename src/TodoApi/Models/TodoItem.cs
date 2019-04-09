@@ -13,5 +13,8 @@ namespace TodoApi.Models
         [Required(ErrorMessage ="名称不能为空")]
         public string Name { get; set; }
         public bool IsComplete { get; set; }        
+
+
+        public Dictionary<string,object> KeyValuePairs { get; set; }
     }
 }

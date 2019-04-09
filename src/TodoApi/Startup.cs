@@ -33,7 +33,7 @@ namespace TodoApi
         {
             services.AddDbContext<TodoDbContext>(option =>
             {
-                option.UseSqlite("Data Source = Todo.db");
+                option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             //Swashbuckle配置
