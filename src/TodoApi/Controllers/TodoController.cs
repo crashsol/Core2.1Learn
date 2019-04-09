@@ -54,6 +54,18 @@ namespace TodoApi.Controllers
             return Ok();
         }
 
+        [HttpPut]    
+        public async Task<IActionResult> EditAsync([FromBody]TodoItem item)
+        {
+            var entity = await _dbContext.TodoItems.SingleOrDefaultAsync(b=>b.Id == item.Id);
+            entity.Name = item.Name;
+            entity.KeyValuePairs = item.KeyValuePairs;
+            _dbContext.Update(entity);
+           await _dbContext.SaveChangesAsync();
+            return Ok();
+            
+        }
+
 
         // DELETE api/<controller>/5
         [HttpPost("del/{id}")]
