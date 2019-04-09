@@ -7,12 +7,14 @@ using EFCoreLearn.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace EFCoreLearn.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase        
+    public class ValuesController : ControllerBase
     {
+        
 
         public readonly TestDbcontext _dbContext;
 
@@ -34,9 +36,9 @@ namespace EFCoreLearn.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult Get(int id)
         {
-            return "value";
+            return Ok();
         }
 
         [HttpGet("search/{name}")]

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28407.52
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}"
 EndProject
@@ -41,7 +41,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpClientApp", "src\HttpCl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressionApp", "src\ExpressionApp\ExpressionApp.csproj", "{1DCC1F6C-1D13-4968-A8E3-6B68B117F91B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqApp", "src\LinqApp\LinqApp.csproj", "{BB5F5C98-EEE7-48D0-824E-8CE4386274FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqApp", "src\LinqApp\LinqApp.csproj", "{BB5F5C98-EEE7-48D0-824E-8CE4386274FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectEqualApp", "src\ObjectEqualApp\ObjectEqualApp.csproj", "{8D631B49-81A0-47CA-890E-A485E3416A36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +123,10 @@ Global
 		{BB5F5C98-EEE7-48D0-824E-8CE4386274FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB5F5C98-EEE7-48D0-824E-8CE4386274FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB5F5C98-EEE7-48D0-824E-8CE4386274FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D631B49-81A0-47CA-890E-A485E3416A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D631B49-81A0-47CA-890E-A485E3416A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D631B49-81A0-47CA-890E-A485E3416A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D631B49-81A0-47CA-890E-A485E3416A36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +151,7 @@ Global
 		{7933E7BE-CF47-4C4B-8242-4094E082D95B} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 		{1DCC1F6C-1D13-4968-A8E3-6B68B117F91B} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 		{BB5F5C98-EEE7-48D0-824E-8CE4386274FC} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
+		{8D631B49-81A0-47CA-890E-A485E3416A36} = {3CFF1F5A-C67C-4F4B-82C8-BE6835739CDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BD03B15-0650-4A2E-8129-B7BC57D78816}

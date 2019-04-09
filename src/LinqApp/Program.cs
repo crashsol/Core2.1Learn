@@ -24,9 +24,9 @@ namespace LinqApp
 
 
             IEnumerable<int> even = new int[]
-         {
-                2,1,3,9,5,7
-         };
+             {
+                    2,1,3,9,5,7
+             };
 
             Print("even", even);
 
@@ -102,6 +102,48 @@ namespace LinqApp
                     Console.WriteLine($"{employee.UserName}\t");
                 }
             }
+
+            Console.WriteLine("------------------------");
+
+            string[] names = { "Tom", "Dick", "Harry", "Mary", "Jay" };
+            IEnumerable<TempProjectionItem> temp = from n in names
+                                                   select new TempProjectionItem
+                                                   {
+                                                       Original = n,
+                                                       Vowellness = n.Replace("a", "").Replace("e", "").Replace("i", "").Replace("o", "").Replace("u", "")
+                                                   };
+            var temp2 = names.Select(b => new TempProjectionItem
+            {
+                Original = b,
+                Vowellness = b.Replace("a", "").Replace("e", "").Replace("i", "").Replace("o", "").Replace("u", "")
+            });
+
+            foreach (var item in temp)
+            {
+                Console.WriteLine($"{item.Original} -{item.Vowellness}");
+            }
+            Console.WriteLine("----------------------");
+            foreach (var item in temp2)
+            {
+                Console.WriteLine($"{item.Original} -{item.Vowellness}");
+            }
+
+            Console.WriteLine("--------------------------");
+            var query = from n in names
+                select new
+                {
+                    Original = n,
+                    Vowellness = n.Replace("a", "").Replace("e", "").Replace("i", "").Replace("o", "").Replace("u", "")
+                }
+                into mid
+                where mid.Vowellness.Length > 2
+                select mid.Original;
+            foreach (var item in query)
+            {
+                Console.WriteLine(item);
+            }
+
+               
 
             Console.ReadKey();
         }
@@ -197,6 +239,14 @@ namespace LinqApp
         }
     }
 
+
+
+    class TempProjectionItem
+    {
+
+        public string Original { get; set; }
+        public string Vowellness { get; set; }
+    }
 
 
 }
